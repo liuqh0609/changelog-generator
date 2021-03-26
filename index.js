@@ -9,7 +9,7 @@ async function run() {
     var headRef = core.getInput('head-ref')
     var baseRef = core.getInput('base-ref')
     const myToken = core.getInput('myToken')
-    const octokit = new github.GitHub(myToken)
+    const octokit = github.getOctokit(myToken)
     const { owner, repo } = github.context.repo
     const regexp = /^[.A-Za-z0-9_-]*$/
 
