@@ -17,11 +17,11 @@ git fetch --prune --unshallow 1>&2
 # think of a better default.
 if [ -z "$base_ref" ]
 then
-  base_ref=$(git rev-list --max-parents=0 HEAD)
+  base_ref=$(git rev-list --grep=release --inver-grep --max-parents=0 HEAD)
 fi
 
 log=$(git log "${base_ref}...${head_ref}" \
-  --pretty=format:"* [\`%h\`](http://github.com/${repo_url}/commit/%H) - %s" \
+  --pretty=format:"* - %s( [\`%h\`](http://github.com/${repo_url}/commit/%H))" \
   --reverse)
 
 if [ -z "$log" ];
