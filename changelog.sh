@@ -24,7 +24,7 @@ log=$(git log "${base_ref}...${head_ref}" \
   --grep="release: v*.*.*"\
   --invert-grep\
   --no-merges\
-  --pretty=format:"* %s（[\`%h\`](http://github.com/${repo_url}/commit/%H)）-<@%cn>" \
+  --pretty=format:"* %s（[\`%h\`](http://github.com/${repo_url}/commit/%H)" \
   --reverse)
 
 if [ -z "$log" ];
