@@ -21,14 +21,15 @@ then
 fi
 
 log=$(git log "${base_ref}...${head_ref}" \
-  --grep=release\
+  --grep="release: v*.*.*"\
   --invert-grep\
+  --no-merges\
   --pretty=format:"* %s（[\`%h\`](http://github.com/${repo_url}/commit/%H)）-<@%cn>" \
   --reverse)
 
 if [ -z "$log" ];
 then
-  log="No Changes."
+  log="当前版本暂无重大更新."
 fi
 
 echo "$log"
